@@ -1,0 +1,22 @@
+﻿@model Mkhz.Models.Product
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<h1>اضافة كمية</h1>
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Add" method="post">
+            <label>ادخل الكمية</label>
+            <input type="text" class="form-control" value="@ViewBag.num" name="num" />
+
+            <input type="submit" value="اضافة" class="btn btn-primary" />
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">الرجوع للقائمة</a>
+</div>

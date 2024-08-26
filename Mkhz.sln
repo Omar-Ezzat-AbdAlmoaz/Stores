@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mkhz", "Mkhz\Mkhz.csproj", "{B86110E7-EAFF-4874-9FEB-A50968DC2AEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B86110E7-EAFF-4874-9FEB-A50968DC2AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B86110E7-EAFF-4874-9FEB-A50968DC2AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B86110E7-EAFF-4874-9FEB-A50968DC2AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B86110E7-EAFF-4874-9FEB-A50968DC2AEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {508FEFDD-626D-4D8A-8CAB-6E3ACE2060AE}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Mkhz.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style=" display: flex;justify-content: space-between;width: 100%;padding: 20px;box-sizing: border-box;">
+    <div style="width: 45%; padding: 10px;box-sizing: border-box;">
+        <h1>المنتجات</h1>
+
+        <p>
+            <a class="btn btn-primary" asp-action="Create">اضافة منتج</a>
+            <a class="btn btn-primary" asp-controller="Invoices" asp-action="Create">فاتورة جديدة</a>
+
+        </p>
+    </div>
+   
+    <div style="width: 45%; padding: 10px;box-sizing: border-box;">
+        <form asp-action="Index" method="post" class="d-flex">
+            <input class="form-control me-sm-2" type="search" value ="@ViewBag.prod" name="prod" placeholder="Search">
+            <input class="btn btn-success my-2 my-sm-0" type="submit" value="بحث">
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameProduct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sales)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameProduct)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sales)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">تعديل</a> |
+                    <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">تفاصيل</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">حذف</a>
+                    <a class="btn btn-dark" asp-action="Add" asp-route-id="@item.Id">ادخال</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

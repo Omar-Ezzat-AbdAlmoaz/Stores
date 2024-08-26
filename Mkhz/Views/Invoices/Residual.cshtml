@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Mkhz.Models.Invoice>
+
+@{
+    ViewData["Title"] = "Residual";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var totalResidual = ViewData["totalResidual"];
+}
+<div style=" display: flex;justify-content: space-between;width: 100%;padding: 20px;box-sizing: border-box;">
+    
+    <div style="width: 45%; padding: 10px;box-sizing: border-box;">
+        <h1>اجمالى الاجل</h1>
+        <h3>@totalResidual</h3>
+    </div>
+    <div style="width: 45%; padding: 10px;box-sizing: border-box;">
+        <h1> @TempData["message"] </h1>
+        <h3>
+            @Model.Count()
+        </h3>
+    </div>
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Residual)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Residual)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+

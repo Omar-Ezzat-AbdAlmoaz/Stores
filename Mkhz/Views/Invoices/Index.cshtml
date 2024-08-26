@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Mkhz.Models.Invoice>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Total = ViewData["Total"];
+    var TotalPaid = ViewData["TotalPaid"];
+    var totalResidual = ViewData["totalResidual"];
+}
+<div style=" display: flex;justify-content: space-between;width: 100%;padding: 20px;box-sizing: border-box;">
+    <div style="width: 45%; padding: 10px;box-sizing: border-box;">
+        <h1>الفواتير</h1>
+        <p>
+            <a class="btn btn-primary" asp-action="Create">فاتورة جديدة</a>
+        </p>
+    </div>
+    <div style="width: 45%; padding: 10px;box-sizing: border-box;"> 
+        <h1>الاجمالى</h1>
+        <h3>@Total</h3>           
+    </div>
+    <div style="width: 45%; padding: 10px;box-sizing: border-box;">
+        <h1>اجمالى الدفع</h1>
+        <h3>@TotalPaid</h3>
+    </div>
+    @*<div style="width: 45%; padding: 10px;box-sizing: border-box;">
+        <h1>اجمالى الاجل</h1>
+        <h3>@totalResidual</h3>
+    </div>*@
+    <div style="width: 45%; padding: 10px;box-sizing: border-box;">
+        <form asp-action ="Index" method="post" class="d-flex">
+            <input class="form-control me-sm-2" type="search" value="@ViewBag.inv" name="inv" placeholder="Search">
+            <input class="btn btn-success my-2 my-sm-0" type="submit" value="بحث">
+        </form>
+    </div>
+</div>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">تعديل</a> |
+                    <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">تفاصيل</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">حذف</a>|
+                    <a class="btn btn-dark" asp-action="Add" asp-route-id="@item.Id">اضافة منتج</a>
+@*                    <a class="btn btn-success" asp-action="Confirmed" asp-route-id="@item.Id">تأكيد</a>
+*@              </td>
+            </tr>
+        }
+    </tbody>
+</table>

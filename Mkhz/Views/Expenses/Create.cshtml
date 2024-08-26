@@ -1,0 +1,43 @@
+﻿@model Mkhz.Models.Expens
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>اضافة مصاريف</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NameExpens" class="control-label"></label>
+                <input asp-for="NameExpens" class="form-control" />
+                <span asp-validation-for="NameExpens" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTimeExpens" class="control-label"></label>
+                <input asp-for="DateTimeExpens" class="form-control" />
+                <span asp-validation-for="DateTimeExpens" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Total" class="control-label"></label>
+                <input asp-for="Total" class="form-control" />
+                <span asp-validation-for="Total" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="اضافة" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">القائمة الرئيسية</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

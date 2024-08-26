@@ -1,0 +1,80 @@
+﻿@model Mkhz.Models.Invoice
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var products = ViewData["Products"] as List<(string,ProductWithQuantity)>;
+}
+
+<h1>@Html.DisplayFor(model => model.Client)</h1>
+
+<div>    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    المنتج
+                </th>
+                <th>
+                    الكمية
+                </th>
+                <th>
+                    السعر
+                </th> 
+                <th>
+                    الاجمالى
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pr in products)
+            {
+                <tr>
+                    <td class="col-sm-2">
+                        @pr.Item1
+                    </td>
+                    <td class="col-sm-2">
+                        @pr.Item2.Quantity
+                    </td>
+                    <td class="col-sm-2">
+                        @pr.Item2.Price
+                    </td>
+                    <td class="col-sm-2">
+                        @pr.Item2.Total
+                    </td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @*<a class="btn btn-dark" asp-action="Add" asp-route-id="@Model.Id">اضافة منتج</a>*@
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Paid)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Paid)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Residual)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Residual)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">تعديل</a> |
+    
+@*    <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model?.Id">تأكيد</a> |
+*@    <a asp-action="Index">القائمة الرئيسية</a>
+</div>

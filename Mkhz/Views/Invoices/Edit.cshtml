@@ -1,0 +1,104 @@
+﻿@model Mkhz.Models.Invoice
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var products = ViewData["Products"] as List<(string, ProductWithQuantity)>;
+}
+
+<h1>تعديل الفاتورة</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Client" class="control-label"></label>
+                <input asp-for="Client" class="form-control" />
+                <span asp-validation-for="Client" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTime" class="control-label"></label>
+                <input asp-for="DateTime" class="form-control" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Total" class="control-label"></label>
+                <input asp-for="Total" class="form-control" readonly/>
+                <span asp-validation-for="Total" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Paid" class="control-label"></label>
+                <input asp-for="Paid" class="form-control" />
+                <span asp-validation-for="Paid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Residual" class="control-label"></label>
+                <input asp-for="Residual" class="form-control" readonly/>
+                <span asp-validation-for="Residual" class="text-danger"></span>
+            </div>
+           
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                المنتج
+                            </th>
+                            <th>
+                                الكمية
+                            </th>
+                            <th>
+                                السعر
+                            </th>
+                            <th>
+                                الاجمالى
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var pr in products)
+                        {
+                            <tr>
+                                <td class="col-sm-2">
+                                    @pr.Item1
+                                </td>
+                                <td class="col-sm-2">
+                                    @pr.Item2.Quantity
+                                </td>
+                                <td class="col-sm-2">
+                                    @pr.Item2.Price
+                                </td>
+                                <td class="col-sm-2">
+                                    @pr.Item2.Total
+                                </td>
+                                <td class="col-sm-4">
+                                    <a class="btn btn-danger" asp-controller="ProductWithQuantities" asp-action="Delete" asp-route-id="@pr.Item2.Id">حذف</a>|
+                                    <a class="btn btn-dark" asp-controller="ProductWithQuantities" asp-action="Edit" asp-route-id="@pr.Item2.Id">تعديل</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a class="btn btn-dark" asp-action="Add" asp-route-id="@Model.Id">اضافة منتج</a>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="حفظ" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">القائمةالرئيسية</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

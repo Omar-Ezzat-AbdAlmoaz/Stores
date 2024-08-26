@@ -1,0 +1,63 @@
+﻿@model Mkhz.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>@Model.NameProduct</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="NameProduct" class="control-label"></label>
+                <input asp-for="NameProduct" class="form-control" />
+                <span asp-validation-for="NameProduct" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NameCompany" class="control-label"></label>
+                <input asp-for="NameCompany" class="form-control" />
+                <span asp-validation-for="NameCompany" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescProduct" class="control-label"></label>
+                <input asp-for="DescProduct" class="form-control" />
+                <span asp-validation-for="DescProduct" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PurchasingPrice" class="control-label"></label>
+                <input asp-for="PurchasingPrice" class="form-control" />
+                <span asp-validation-for="PurchasingPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sellingPrice" class="control-label"></label>
+                <input asp-for="sellingPrice" class="form-control" />
+                <span asp-validation-for="sellingPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductQuantity" class="control-label"></label>
+                <input asp-for="ProductQuantity" class="form-control" />
+                <span asp-validation-for="ProductQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sales" class="control-label"></label>
+                <input asp-for="sales" class="form-control" />
+                <span asp-validation-for="sales" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="حفظ" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">القائمة الرئيسية</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

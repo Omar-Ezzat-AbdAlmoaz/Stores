@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Mkhz.Models.Invoice>
+
+@{
+    ViewData["Title"] = "Clients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style=" display: flex;justify-content: space-between;width: 100%;padding: 20px;box-sizing: border-box;">
+    <div style="width: 45%; padding: 10px;box-sizing: border-box;">
+        <h1>التجار</h1>
+    </div>
+
+    <div style="width: 45%; padding: 10px;box-sizing: border-box;">
+        <form asp-action="Clients" method="post" class="d-flex">
+            <input class="form-control me-sm-2" type="search" value="@ViewBag.client" name="client" placeholder="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">بحث</button>
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Residual)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Client)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Paid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Residual)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

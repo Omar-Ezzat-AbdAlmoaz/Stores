@@ -1,0 +1,30 @@
+﻿@model Mkhz.Models.Invoice
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@TempData["message"]</h1>
+
+<h1>اضافة منتج</h1>
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Add" method="post">
+            <label>المنتج</label>
+            <select type="text" class="form-control" asp-items="ViewBag.prods" name="prod"></select>
+
+            <label>الكمية</label>
+            <input type="number" class="form-control" name="num" />
+
+            <label>السعر</label>
+            <input  class="form-control" name="price" />
+
+            <input type="submit" value="اضافة" class="btn btn-primary" />
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">الرجوع للقائمة</a>
+</div>

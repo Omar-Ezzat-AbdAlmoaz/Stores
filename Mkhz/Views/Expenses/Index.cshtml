@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Mkhz.Models.Expens>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Total = ViewData["Total"];
+}
+<div style=" display: flex;justify-content: space-between;width: 100%;padding: 20px;box-sizing: border-box;">
+    <div style="width: 45%; padding: 10px;box-sizing: border-box;">
+        <h1>المصروفات</h1>
+        <p>
+            <a class="btn btn-primary" asp-action="Create">اضافة</a>
+        </p>
+    </div>
+    <div style="width: 45%; padding: 10px;box-sizing: border-box;">
+        <h1>الاجمالى</h1>
+        <h3>@Total</h3>
+    </div>
+</div>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameExpens)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTimeExpens)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameExpens)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeExpens)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">تعديل</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">حذف</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
